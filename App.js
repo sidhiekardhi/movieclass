@@ -8,9 +8,7 @@ export default class App extends Component {
         super(props);
         // Don't call this.setState() here!
         this.state = { 
-            data: [
-            
-            ]
+            data: []
         };
 
       }
@@ -22,21 +20,21 @@ export default class App extends Component {
     getData =()=>{
         
         //Make a request for a user with a given ID
-        axios.get('http://omdbapi.com/?apikey=e01f82b8&s=kong')
+        axios.get('https://jsonplaceholder.typicode.com/todos')
         .then( (response) => {
-          response.json()
-          let data=response.data.Search;
-           console.log(x);
-          this.setState({data});
-          console.log("auk ahh"+this.state.data);
+          console.log(response.data)
+          let data=response.data;   
+          this.setState({data:data});
+         
 
         })
         .catch(function (error) {
         // handle error
-        // console.log(error);
+         console.log(error);
         })
         .then(function () {
         // always executed
+       
         });
     }
 
@@ -51,9 +49,7 @@ export default class App extends Component {
    
     renderItem = ({ item }) => (
         <View>
-            <Text style={styles.title}>{item.Title}</Text>
-            {/* <Item title={item.Title} /> */}
-
+            <Text style={styles.title}>{item.title}</Text>
         </View>
     )
 
@@ -65,7 +61,7 @@ export default class App extends Component {
               <FlatList
                 data={this.state.data}
                 renderItem={this.renderItem}
-                keyExtractor={item => item.imdbID}
+                keyExtractor={item => item.id}
               />
             </SafeAreaView>
           );
