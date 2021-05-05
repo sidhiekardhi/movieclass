@@ -58,7 +58,7 @@ export default class Like extends Component {
    
     for (let j= 0 ; j <5;j++){
        
-       if(counter % 2 !== 0){
+       if(counter % 2 !== 0){ 
             dummyData[counter]=1
        }else{
             dummyData[counter]=0
@@ -156,7 +156,7 @@ gambarFibonaci (){
 
 }
 
-
+//UTILITY
  isPrime(num) {
     if (num <= 1) return false;
     if (num === 2) return true;
@@ -170,8 +170,7 @@ gambarFibonaci (){
     return true;
   }
 
-
-   listFibonacci(n) {
+  listFibonacci(n) {
     // declare the array starting with the first 2 values of the fibonacci sequence
     // starting at array index 1, and push current index + previous index to the array
     for (var fibonacci = [0, 1], i = 1; i < n; i++) 
@@ -186,13 +185,10 @@ gambarFibonaci (){
    
 
     render() {
-    
-     
-        
       return (
       <View style={styles.container2}>{
           this.state.gambarLike.map((data,i)=>{
-        return (  
+        return ( 
             <View style={styles.container}>
             <LikeButton jenis = {data} urutan = {i} actionClick = {this.isChildPressed}/>
            </View>

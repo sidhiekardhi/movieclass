@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios'
 
 export default class App extends Component {
@@ -11,45 +11,39 @@ export default class App extends Component {
             data: []
         };
 
-      }
+    }
 
     componentDidMount(){
-     this.getData();
+      this.getData();
     }
 
     getData =()=>{
-        
         //Make a request for a user with a given ID
-        axios.get('https://jsonplaceholder.typicode.com/todos')
+        axios.get('http://192.168.0.106:8080/buku/')
         .then( (response) => {
           console.log(response.data)
           let data=response.data;   
           this.setState({data:data});
-         
-
         })
         .catch(function (error) {
         // handle error
          console.log(error);
         })
-        .then(function () {
-        // always executed
-       
-        });
     }
 
     
 
-     Item = ({ title }) => (
-        <View style={styles.item}>
-          <Text style={styles.title}>{title}</Text>
-        </View>
-      );
+    //  Item = ({ title }) => (
+    //     <View style={styles.item}>
+    //       <Text style={styles.title}>{title}</Text>
+    //     </View>
+    //   );
       
-   
     renderItem = ({ item }) => (
-        <View>
-            <Text style={styles.title}>{item.title}</Text>
+        <View style = {{borderWidth:5, borderColor:"red"}}>
+            <Text style={styles.title}>Judul Buku : {item.judulBuku}</Text>
+            <Text style={styles.title}>Jumlah Halaman : {item.jumlahHalaman}</Text>
+            <Text style={styles.title}>Nama Penulis : {item.namaPenulis  }</Text>
         </View>
     )
 
@@ -58,11 +52,13 @@ export default class App extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
+              <TouchableOpacity style={styles.button}><Text style={styles.title}>Tambahkan Buku</Text></TouchableOpacity>
               <FlatList
                 data={this.state.data}
                 renderItem={this.renderItem}
                 keyExtractor={item => item.id}
               />
+              
             </SafeAreaView>
           );
     }
@@ -80,7 +76,11 @@ const styles = StyleSheet.create({
       marginHorizontal: 16,
     },
     title: {
-      fontSize: 32,
+      fontSize: 18,
+    },
+    button: {
+      alignItems: "center",
+      backgroundColor: "#DDDDDD",
+      padding: 10,
     },
   });
-  

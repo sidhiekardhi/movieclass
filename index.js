@@ -3,8 +3,8 @@
  */
 
 import {AppRegistry} from 'react-native';
+import AddBuku from './AddBuku';
 import App from './App';
 import {name as appName} from './app.json';
-import Like from './Like';
 
-AppRegistry.registerComponent(appName, () => Like);
+AppRegistry.registerComponent(appName, () => AddBuku);
