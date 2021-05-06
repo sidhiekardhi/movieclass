@@ -16,12 +16,15 @@ export default class App extends Component {
     componentDidMount(){
       this.getData();
     }
+    // componentDidUpdate(){
+    //   this.getData();
+    // }
 
     getData =()=>{
         //Make a request for a user with a given ID
-        axios.get('http://192.168.0.106:8080/buku/')
+        axios.get('http://192.168.123.56:8080/buku/')
         .then( (response) => {
-          console.log(response.data)
+          // console.log(response.data)
           let data=response.data;   
           this.setState({data:data});
         })
@@ -52,7 +55,7 @@ export default class App extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-              <TouchableOpacity style={styles.button}><Text style={styles.title}>Tambahkan Buku</Text></TouchableOpacity>
+              <TouchableOpacity onPress={()=>{this.props.navigation.replace("AddBuku")}} style={styles.button}><Text style={styles.title}>Tambahkan Buku</Text></TouchableOpacity>
               <FlatList
                 data={this.state.data}
                 renderItem={this.renderItem}
