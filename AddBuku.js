@@ -14,11 +14,11 @@ export class AddBuku extends Component {
 
     handleAdd(){
         // console.log(this.state)
-        axios.post('http://192.168.123.56:8080/buku/addBuku',this.state)
+        axios.post('http://192.168.123.21:8080/buku/addBuku',this.state)
         .then( (response) => {
           // console.log(response)
           alert(response.data)
-          this.props.navigation.replace("App")
+          this.props.navigation.navigate("App")
         })
         .catch(function (error) {
         // handle error
@@ -36,7 +36,7 @@ export class AddBuku extends Component {
                 <Text style={styles.title}> Input Nama Penulis </Text>
                 <TextInput placeholder="Nama Penulis" onChangeText={(data)=>{this.setState({namaPenulis:data})}}/>
                 <TouchableOpacity style={styles.button} onPress={this.handleAdd.bind(this)}><Text style={styles.title}>Tambahkan Buku</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={()=>{this.props.navigation.replace("App")}}><Text style={styles.title}>Cancel</Text></TouchableOpacity>
+                {/* <TouchableOpacity style={styles.button} onPress={()=>{this.props.navigation.replace("App")}}><Text style={styles.title}>Cancel</Text></TouchableOpacity> */}
               
             </View>
         )
