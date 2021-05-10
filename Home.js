@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import App from './App';
-import AddBuku from './AddBuku';
-import UpdateBuku from './UpdateBuku';
+import List from './src/Page/List';
+import Register from './src/Page/Register';
 
 const Stack = createStackNavigator();
 
@@ -14,14 +12,11 @@ export class Home extends Component {
                 <NavigationContainer>
                     <Stack.Navigator> 
                         <Stack.Screen 
-                        name="App" 
-                        component={App}/>
+                        name="List" 
+                        component={List}/>
                         <Stack.Screen 
-                        name="AddBuku" 
-                        component={AddBuku}/>
-                        <Stack.Screen 
-                        name="UpdateBuku" 
-                        component={UpdateBuku}/>
+                        name="Register" 
+                        component={Register}/>
                     </Stack.Navigator>
                 </NavigationContainer>
         )
@@ -29,3 +24,54 @@ export class Home extends Component {
 }
 
 export default Home
+
+
+
+
+
+
+
+
+
+
+// import React, { Component } from 'react'
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
+// import List from './src/Page/List';
+// import Register from './src/Page/Register';
+// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+// const Stack = createMaterialBottomTabNavigator();
+
+// export class Home extends Component {
+//     render() {
+//         return (
+//                 <NavigationContainer>
+//                     <Stack.Navigator> 
+//                         <Stack.Screen 
+//                         name="List" 
+//                         component={List}
+//                         options={{
+//                             tabBarLabel: 'List',
+//                             tabBarIcon: ({ color }) => (
+//                               <MaterialCommunityIcons name="home" color={color} size={26} />
+//                             ),
+//                         }}/>
+//                         <Stack.Screen 
+//                         name="Register" 
+//                         component={Register}
+//                         options={{
+//                           tabBarLabel: 'Register',
+//                           tabBarIcon: ({ color }) => (
+//                             <MaterialCommunityIcons name="account" color={color} size={26} />
+//                           ),
+//                         }}
+//                         />
+//                     </Stack.Navigator>
+//                 </NavigationContainer>
+//         )
+//     }
+// }
+
+// export default Home
